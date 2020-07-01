@@ -9,7 +9,7 @@ SRC_URI="https://github.com/VSCodium/vscodium/releases/download/1.46.1/VSCodium-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND=""
