@@ -18,6 +18,8 @@ BDEPEND=""
 
 QA_PRESTRIPPED="opt/VSCodium/vscodium"
 
+S="${WORKDIR}"
+
 src_install(){
 	pax-mark m code
 	insinto "/opt/VSCodium"
