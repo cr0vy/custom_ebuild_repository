@@ -21,18 +21,19 @@ QA_PRESTRIPPED="opt/VSCodium/vscodium"
 S="${WORKDIR}"
 
 src_install(){
-	pax-mark m code
-	insinto "/opt/VSCodium"
-	doins -r *
-	dosym "../../opt/VSCodium/bin/codium" "/usr/bin/vscodium"
-	make_desktop_entry "VSCodium" "Visual Studio Code" "VSCodium" "Development;IDE"
-	doicon "${FILESDIR}/code.png"
-	fperms +x "/opt/VSCodium/codium"
-	fperms +x "/opt/VSCodium/bin/codium"
-	fperms +x "/opt/VSCodium/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
-	fperms +x "/opt/VSCodium/resources/app/extensions/git/dist/askpass.sh"
-	insinto "/usr/share/licenses/VSCodium"
-	for i in resources/app/LICEN*; do
-		newins "${i}" "$(basename ${i})"
-	done
+    pax-mark m code
+    insinto "/opt/VSCodium"
+    doins -r *
+    dosym "../../opt/VSCodium/bin/codium" "/usr/bin/vscodium"
+    dosym "../../opt/VSCodium/bin/codium" "/usr/bin/codium"
+    make_desktop_entry "VSCodium" "Visual Studio Code" "VSCodium" "Development;IDE"
+    doicon "${FILESDIR}/code.png"
+    fperms +x "/opt/VSCodium/codium"
+    fperms +x "/opt/VSCodium/bin/codium"
+    fperms +x "/opt/VSCodium/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
+    fperms +x "/opt/VSCodium/resources/app/extensions/git/dist/askpass.sh"
+    insinto "/usr/share/licenses/VSCodium"
+    for i in resources/app/LICEN*; do
+        newins "${i}" "$(basename ${i})"
+    done
 }
