@@ -3,6 +3,7 @@
 
 EAPI=7
 
+EXEC_NAME="vscodium"
 DESCRIPTION="Free/Libre Open Source Software Binaries of VSCode"
 HOMEPAGE="https://vscodium.com"
 SRC_URI="https://github.com/VSCodium/vscodium/releases/download/1.46.1/VSCodium-linux-x64-1.46.1.tar.gz"
@@ -36,8 +37,8 @@ src_install(){
     doins -r *
     dosym "../../opt/VSCodium/bin/codium" "/usr/bin/vscodium"
     dosym "../../opt/VSCodium/bin/codium" "/usr/bin/codium"
-    make_desktop_entry "VSCodium" "Visual Studio Code" "VSCodium" "Development;IDE"
-    doicon "${FILESDIR}/code.png"
+    make_desktop_entry ${EXEC_NAME} "Visual Studio Codium" "VSCodium" "Development;IDE"
+    newicon "${S}/resources/app/resources/linux/code.png" "${PN}.png"
     fperms +x "/opt/VSCodium/codium"
     fperms +x "/opt/VSCodium/bin/codium"
     fperms +x "/opt/VSCodium/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
