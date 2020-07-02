@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit eutils desktop
+
 EXEC_NAME="vscodium"
 DESCRIPTION="Free/Libre Open Source Software Binaries of VSCode"
 HOMEPAGE="https://vscodium.com"
@@ -27,7 +29,7 @@ RDEPEND="
         libsecret? ( app-crypt/libsecret[crypt] )"
 BDEPEND=""
 
-QA_PRESTRIPPED="opt/VSCodium/vscodium"
+QA_PRESTRIPPED="opt/VSCodium/codium"
 
 S="${WORKDIR}"
 
@@ -37,7 +39,7 @@ src_install(){
     doins -r *
     dosym "../../opt/VSCodium/bin/codium" "/usr/bin/vscodium"
     dosym "../../opt/VSCodium/bin/codium" "/usr/bin/codium"
-    make_desktop_entry ${EXEC_NAME} "Visual Studio Codium" "VSCodium" "Development;IDE"
+    make_desktop_entry ${EXEC_NAME} "VSCodium" "${PN}" "Development;IDE"
     newicon "${S}/resources/app/resources/linux/code.png" "${PN}.png"
     fperms +x "/opt/VSCodium/codium"
     fperms +x "/opt/VSCodium/bin/codium"
